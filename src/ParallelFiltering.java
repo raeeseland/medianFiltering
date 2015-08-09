@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class ParallelFiltering extends RecursiveAction {
 
-    final static float SEQUENTIAL_CUTOFF = 500;
+    float SEQUENTIAL_CUTOFF = 5000;
     float[] array;
     int start;
     int end;
@@ -63,7 +63,7 @@ public class ParallelFiltering extends RecursiveAction {
             ParallelFiltering right = new ParallelFiltering(array, medianList, mid1, end, filterSize);
             left.fork();
             right.compute();
-            left.join();
+            //left.join();
         }
 
     }
