@@ -51,26 +51,34 @@ public class Driver {
 		//long endTime   = System.currentTimeMillis();
         //long totalTime = endTime - startTime;
         //System.out.println(totalTime);
-
-        long startTime1 = System.currentTimeMillis();
-        SequentialFiltering medianS = new SequentialFiltering(21, array);
-        float[] ans1 = medianS.getMedianList();
-        long endTime1 = System.currentTimeMillis();
-        long totalTime1 = endTime1 - startTime1;
-        System.out.println(totalTime1 + "ms");
-
-        long startTime2 = System.currentTimeMillis();
-        Main medianP = new Main();
-        float[] ans = medianP.median(array, 21);
-        long endTime2 = System.currentTimeMillis();
-        long totalTime2 = endTime2 - startTime2;
-        System.out.println(totalTime2 + "ms");
-
-        System.out.println(medianP.compare(medianS.getMedianList()));
-
-        for (int j = 0; j < ans.length; j++) {
-            T1.print(j + " " + ans[j] + "\n");
-            T2.print(j + " " + ans1[j] + "\n");
+        for(int l=3; l<22; l+=2){
+            long totalTime1=0;
+            for(int i=0; i<20; i++){
+                long startTime1 = System.currentTimeMillis();
+                SequentialFiltering medianS = new SequentialFiltering(l, array);
+                float[] ans1 = medianS.getMedianList();
+                long endTime1 = System.currentTimeMillis();
+                totalTime1 += endTime1 - startTime1;
+            }
+            T1.print(totalTime1/20+"n");
         }
+        
+        for(int k=3; k<22; k+=2){
+            long totalTime2=0;
+            for(int j=0; j<20; j++){
+                long startTime2 = System.currentTimeMillis();
+                Main medianP = new Main();
+                float[] ans = medianP.median(array, k);
+                long endTime2 = System.currentTimeMillis();
+                totalTime2 += endTime2 - startTime2;
+            }
+            T2.print(totalTime2/20+"n");
+        }
+        
+        
+        
+            
+        //System.out.println(medianP.compare(medianS.getMedianList()));
+
     }
 }
