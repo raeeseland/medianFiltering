@@ -50,4 +50,12 @@ public class Test {
             return true;
         }
     }
+    
+    float[] getSequential(){
+        return ans1;
+    }
+    
+    float[] getParallel(){
+        return ans;
+    }
 }

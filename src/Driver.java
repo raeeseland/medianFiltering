@@ -16,7 +16,7 @@ public class Driver {
         //long startTime = System.currentTimeMillis();
         List<Float> list = new ArrayList<Float>();
         Scanner input = new Scanner(System.in);
-        File file = new File("inp3.txt");
+        File file = new File("inp2.txt");
         try {
             Scanner line = new Scanner(file);
             line.nextLine();
@@ -34,8 +34,8 @@ public class Driver {
         } catch (FileNotFoundException e) {
         };
 
-        File out = new File("output.txt");
-        File out1 = new File("200output1.txt");
+        File out = new File("outputS.txt");
+        File out1 = new File("outputP.txt");
         PrintStream T1 = null;
         PrintStream T2 = null;
 
@@ -103,5 +103,19 @@ public class Driver {
          else
          System.out.println("Sequential filtering is "+faster+"% faster "+"than parallel");
          
+         /*
+         float[] ans = time.getParallel();
+         float[] ans1 = time.getSequential();
+         
+         if(time.compare())
+             System.out.println("Sequential and Parallel lists are equal");
+         else
+             System.out.println("Sequential and Parallel lists are equal");
+         
+         for(int i=0; i<array.length; i++){
+             T1.print(i+1+" "+ans1[i]);
+             T2.print(i+1+" "+ans[i]);
+         }
+         */
     }
 }
