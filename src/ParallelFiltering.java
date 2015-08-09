@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class ParallelFiltering extends RecursiveAction {
 
-    float SEQUENTIAL_CUTOFF = 5000;
+    float SEQUENTIAL_CUTOFF = 500;
     float[] array;
     int start;
     int end;
@@ -19,13 +19,13 @@ public class ParallelFiltering extends RecursiveAction {
     int endIndex;
     float[] medianList;
 
-    ParallelFiltering(float[] array, float[] medianList, int start, int end, int filterSize) {
+    ParallelFiltering(float[] array, float[] medianList, int start, int end, int filterSize/*, SEQ_CUTT*/) {
         this.array = array;
         this.medianList = medianList;
         this.start = start;
         this.end = end;
         this.filterSize = filterSize;
-        
+        //SEQUENTIAL_CUTOFF=SEQ_CUTT
         //where to start inserting the medians given a start and end value to look for.
         startIndex = start + (int) Math.floor(filterSize / 2);
         endIndex = end - (int) Math.floor(filterSize / 2);
@@ -67,5 +67,7 @@ public class ParallelFiltering extends RecursiveAction {
         }
 
     }
+    
+   
 
 }

@@ -13,23 +13,19 @@ public class Test {
     float[] ans;
     float[] ans1;
 
-    public long ParallelTest(float[] array, int filterSize) {
-        Main medianP = new Main(array);
-
+    public long ParallelTest(float[] array, int filterSize/*, float SEQ_CUTT*/) {
+        Main medianP = new Main(array/*, SEQ_CUTT*/);
         long startTime2 = System.currentTimeMillis();
         ans = medianP.median(array, filterSize);
         long endTime2 = System.currentTimeMillis();
-
         long totalTime2 = endTime2 - startTime2;
         return totalTime2;
     }
 
     public long SequentialTest(int filterSize, float[] array) {
-
         long startTime1 = System.currentTimeMillis();
         SequentialFiltering medianS = new SequentialFiltering(filterSize, array);
         long endTime1 = System.currentTimeMillis();
-
         ans1 = medianS.getMedianList();
         long totalTime1 = endTime1 - startTime1;
         return totalTime1;
