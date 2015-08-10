@@ -1,0 +1,30 @@
+filterSize 3
+8389061
+
+filterSize 5
+8228069
+
+filterSize 7
+13978952
+
+filterSize 9
+17746283
+
+filterSize 11
+22372958
+
+filterSize 13
+28418082
+
+filterSize 15
+32076644
+
+filterSize 17
+39316441
+
+filterSize 19
+38622360
+
+filterSize 21
+40388954
+

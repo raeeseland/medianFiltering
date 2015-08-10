@@ -3,14 +3,13 @@
  * ParallelFiltering Class
  * */
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
+
 import java.util.concurrent.RecursiveAction;
 import java.util.Arrays;
 
 public class ParallelFiltering extends RecursiveAction {
 
-    float SEQUENTIAL_CUTOFF = 500;
+    final static float SEQUENTIAL_CUTOFF=1500;
     float[] array;
     int start;
     int end;
@@ -19,13 +18,13 @@ public class ParallelFiltering extends RecursiveAction {
     int endIndex;
     float[] medianList;
 
-    ParallelFiltering(float[] array, float[] medianList, int start, int end, int filterSize/*, SEQ_CUTT*/) {
+    ParallelFiltering(float[] array, float[] medianList, int start, int end, int filterSize/*, float SEQ_CUTT*/) {
         this.array = array;
         this.medianList = medianList;
         this.start = start;
         this.end = end;
         this.filterSize = filterSize;
-        //SEQUENTIAL_CUTOFF=SEQ_CUTT
+        //SEQUENTIAL_CUTOFF=SEQ_CUTT;
         //where to start inserting the medians given a start and end value to look for.
         startIndex = start + (int) Math.floor(filterSize / 2);
         endIndex = end - (int) Math.floor(filterSize / 2);
@@ -59,11 +58,10 @@ public class ParallelFiltering extends RecursiveAction {
             int mid = (int) Math.floor((end + start) / 2) + (int) Math.floor(filterSize / 2);
             int mid1 = (int) mid - 2 * (int) Math.floor(filterSize / 2);
 
-            ParallelFiltering left = new ParallelFiltering(array, medianList, start, mid, filterSize);
-            ParallelFiltering right = new ParallelFiltering(array, medianList, mid1, end, filterSize);
+            ParallelFiltering left = new ParallelFiltering(array, medianList, start, mid, filterSize/*,SEQUENTIAL_CUTOFF*/);
+            ParallelFiltering right = new ParallelFiltering(array, medianList, mid1, end, filterSize/*,SEQUENTIAL_CUTOFF*/);
             left.fork();
             right.compute();
-            //left.join();
         }
 
     }

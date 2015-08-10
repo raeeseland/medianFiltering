@@ -1,0 +1,30 @@
+filterSize 3
+36429335
+
+filterSize 5
+34917862
+
+filterSize 7
+33655941
+
+filterSize 9
+34389478
+
+filterSize 11
+33554373
+
+filterSize 13
+32457380
+
+filterSize 15
+36998183
+
+filterSize 17
+32481188
+
+filterSize 19
+32539892
+
+filterSize 21
+32197172
+

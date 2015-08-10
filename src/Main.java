@@ -13,6 +13,8 @@ public class Main {
     
     Main(float[] array/*, float SEQ_CUTT*/){
         ans = new float[array.length];
+        //this.SEQ_CUTT=SEQ_CUTT;
+
     }
 
     float[] median(float[] arr1, int filterSize) {

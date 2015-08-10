@@ -16,8 +16,9 @@ public class Driver {
       
         List<Float> list = new ArrayList<Float>();
         Scanner input = new Scanner(System.in);
-        
-        File file = new File("inp1.txt");
+        System.out.println("Enter file to be filterd(inp1.txt, inp1B.txt, inp2.txt, inp2B.txt, inp3.txt, inp3B.txt, inp4.txt):");
+        String name = input.next();
+        File file = new File(name);
         try {
             Scanner line = new Scanner(file);
             line.nextLine();
@@ -39,7 +40,9 @@ public class Driver {
         for (int i = 0; i < list.size(); i++) {
             array[i] = list.get(i);
         }
-
+        
+        ///*
+        //use to compare parallel and seqential given an input file and filter size
         Test time = new Test();
         System.out.print("Enter filter size(odd between 3-21):\n");
         int filterSize = input.nextInt();
@@ -59,23 +62,26 @@ public class Driver {
         long parallelTime = parallelTime1 / 10;
         long sequentialTime = sequentialTime1 / 10;
         
-        long faster = ((sequentialTime - parallelTime) / parallelTime) * 100;
+        int faster = (int)(((sequentialTime - parallelTime) / parallelTime) * 100);
        
         System.out.println("It takes sequential filtering " + sequentialTime + "ms " + "and parallel filtering "
                 + parallelTime + "ms " + "to filter an array of size " + array.length + " given filter size "
                 + filterSize + ".");
         
         if (parallelTime - sequentialTime <= 0) {
-            System.out.println("Parallel filtering is " + faster + "% faster " + "than sequential");
-        } else {
-            System.out.println("Sequential filtering is " + faster + "% faster " + "than parallel");
+            System.out.println("Parallel filtering is approxiamatly " + faster + "% faster " + "than sequential");
+        } 
+        else if ((parallelTime - sequentialTime > 0)) {
+            System.out.println("Sequential filtering is Approxiamatly " + faster + "% faster " + "than parallel");
         }
+       // */
+        
         
         /*
-        Use to test filter sizes
-        
-        File out = new File("outputS.txt");
-        File out1 = new File("outputP.txt");
+        //Use to test filter sizes
+        Test time = new Test();
+        File out = new File("outputS"+"("+name+")"+".txt");
+        File out1 = new File("outputP"+"("+name+")"+".txt");
         PrintStream T1 = null;
         PrintStream T2 = null;
 
@@ -111,9 +117,13 @@ public class Driver {
        
         
         /*
-        use to test sequential limits(given a filter size)
+        //use to test sequential limits(given a filter size)
         
-        File out = new File("outputS.txt");
+        Test time = new Test();
+        System.out.print("Enter filter size(odd between 3-21):\n");
+        int filterSize = input.nextInt();
+        
+        File out = new File("outputP"+"("+name+")"+"("+filterSize+")"+".txt");
         PrintStream T2 = null;
         try {
             T2 = new PrintStream(out);
@@ -121,31 +131,29 @@ public class Driver {
         } catch (FileNotFoundException e) {
         };
         
-        Test time = new Test();
-        System.out.print("Enter filter size(odd between 3-21):\n");
-        int filterSize = input.nextInt();
         long parallelTime = 0;
-        long sequentialTime = 0;
         T2.println("filter size"+" "+filterSize);
         
         for (float j = 500; j < 20000; j+=500) {
             for(int i=0; i<11; i++){
-                parallelTime += time.ParallelTest(array, filterSize,j);
+                parallelTime += time.ParallelTest(array,filterSize,j);
                 if (i == 0) {
-                    parallelTime1 = 0;                  
+                    parallelTime = 0;                  
                 }
-                T2.println(parallelTime / 10);
-                T2.println();
+                
             }
+            T2.println(j+" "+parallelTime / 10);
+            T2.println();
         }
         
         */
         
-        /*
-        Use to print list to a file 
-        
-        File out = new File("outputS.txt");
-        File out1 = new File("outputP.txt");
+       // /*
+        //Use to print list to a file 
+        String outFileS="outputSequential"+"("+name+")"+".txt";
+        String outFileP="outputParallel"+"("+name+")"+".txt";
+        File out = new File(outFileS);
+        File out1 = new File(outFileP);
         PrintStream T1 = null;
         PrintStream T2 = null;
 
@@ -168,7 +176,8 @@ public class Driver {
             T1.print(i + 1 + " " + ans1[i]);
             T2.print(i + 1 + " " + ans[i]);
         }
-        */
+        System.out.println("Median lists have been written to files "+outFileS+" and "+outFileP);
+        //*/
 
     }
 }

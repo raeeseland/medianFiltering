@@ -1,0 +1,30 @@
+filterSize 3
+4114674
+
+filterSize 5
+11586415
+
+filterSize 7
+5497337
+
+filterSize 9
+10707526
+
+filterSize 11
+3709889
+
+filterSize 13
+10370818
+
+filterSize 15
+9463135
+
+filterSize 17
+8840448
+
+filterSize 19
+5291528
+
+filterSize 21
+5988108
+
