@@ -16,7 +16,7 @@ public class Driver {
       
         List<Float> list = new ArrayList<Float>();
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter file to be filterd(inp1.txt, inp1B.txt, inp2.txt, inp2B.txt, inp3.txt, inp3B.txt, inp4.txt):");
+        System.out.println("Enter file to be filterd(in working directory):");
         String name = input.next();
         File file = new File(name);
         try {
